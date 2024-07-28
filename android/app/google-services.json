@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "869603955109",
+    "project_id": "fb-todoos",
+    "storage_bucket": "fb-todoos.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:869603955109:android:17dfd194c1f15869ef984c",
+        "android_client_info": {
+          "package_name": "com.example.todoos"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0LZOb4ZvFItzO4sWbc643ORmgKdOUXok"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
