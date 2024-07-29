@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todoos/firebase_options.dart';
 import 'package:todoos/pages/login_register_page.dart';
+import 'package:todoos/pages/home_page.dart';
 import 'package:todoos/controller/auth_controller.dart';
 
 void main() async {
@@ -10,7 +11,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  Get.put(AuthController()); 
+  Get.put(AuthController());
   runApp(const MyApp());
 }
 
@@ -25,7 +26,15 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const LoginRegisterPage(),
+      home: Obx(() {
+        final authController = Get.find<AuthController>();
+       
+        if (authController.user.value != null) {
+          return HomePage();
+        } else {
+          return const LoginRegisterPage();
+        }
+      }),
     );
   }
 }
