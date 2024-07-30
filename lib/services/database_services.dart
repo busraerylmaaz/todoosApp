@@ -43,6 +43,7 @@ class DatabaseServices {
     return todoCollection
         .where('uid', isEqualTo: user!.uid)
         .where('completed', isEqualTo: false)
+        .orderBy('createdAt', descending: true)
         .snapshots()
         .map(_todoListFromSnapshot);
   }
@@ -52,6 +53,7 @@ class DatabaseServices {
     return todoCollection
         .where('uid', isEqualTo: user!.uid)
         .where('completed', isEqualTo: true)
+        .orderBy('createdAt', descending: true)
         .snapshots()
         .map(_todoListFromSnapshot);
   }

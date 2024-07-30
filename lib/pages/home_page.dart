@@ -9,6 +9,7 @@ import 'package:todoos/widgets/pending_widget.dart';
 class HomePageController extends GetxController {
   var buttonIndex = 0.obs;
   final DatabaseServices databaseService = DatabaseServices();
+  final formKey = GlobalKey<FormState>();
 
   void setButtonIndex(int index) {
     buttonIndex.value = index;
@@ -30,24 +31,45 @@ class HomePageController extends GetxController {
         content: SingleChildScrollView(
           child: Container(
             width: MediaQuery.of(context).size.width,
-            child: Column(
-              children: [
-                TextField(
-                  controller: titleController,
-                  decoration: InputDecoration(
-                    labelText: "Title",
-                    border: OutlineInputBorder(),
+            child: Form(
+              key: formKey,
+              child: Column(
+                children: [
+                  TextFormField(
+                    controller: titleController,
+                    decoration: InputDecoration(
+                      labelText: "Title",
+                      border: OutlineInputBorder(),
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "Please enter a title";
+                      }
+                      else if (value.length > 50) {
+                        return "Title cannot be more than 50 characters";
+                      }
+                      return null;
+                    },
                   ),
-                ),
-                SizedBox(height: 10),
-                TextField(
-                  controller: descriptionController,
-                  decoration: InputDecoration(
-                    labelText: "Description",
-                    border: OutlineInputBorder(),
+                  SizedBox(height: 20),
+                  TextFormField(
+                    controller: descriptionController,
+                    decoration: InputDecoration(
+                      labelText: "Description",
+                      border: OutlineInputBorder(),
+                    ),
+                    maxLines: null, 
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "Please enter a description";
+                      } else if (value.length > 200) {
+                        return "Description cannot be more than 200 characters";
+                      }
+                      return null;
+                    },
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
@@ -60,23 +82,25 @@ class HomePageController extends GetxController {
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.indigo,
+              backgroundColor: Color(0xFF7843E6),
               foregroundColor: Colors.white,
             ),
             onPressed: () async {
-              if (todo == null) {
-                await databaseService.addTodoTask(
-                  titleController.text,
-                  descriptionController.text,
-                );
-              } else {
-                await databaseService.updateTodo(
-                  todo.id,
-                  titleController.text,
-                  descriptionController.text,
-                );
+              if (formKey.currentState!.validate()) {
+                if (todo == null) {
+                  await databaseService.addTodoTask(
+                    titleController.text,
+                    descriptionController.text,
+                  );
+                } else {
+                  await databaseService.updateTodo(
+                    todo.id,
+                    titleController.text,
+                    descriptionController.text,
+                  );
+                }
+                Get.back();
               }
-              Get.back();
             },
             child: Text(todo == null ? "Add" : "Update"),
           ),
@@ -105,7 +129,23 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Color(0xFF7843E6),
         foregroundColor: Colors.white,
-        title: Text("todoos"),
+        title: Row(
+          children: [
+            CircleAvatar(
+              radius: 25, 
+              backgroundImage: AssetImage('assets/images/logoo.png'), 
+              backgroundColor: Colors.transparent,
+            ),
+            SizedBox(width: 10),
+            Text(
+              "todoos",
+              style: TextStyle(
+                fontSize: 30, 
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
         actions: [
           IconButton(
             icon: Icon(Icons.logout),
