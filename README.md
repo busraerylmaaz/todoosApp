@@ -43,16 +43,23 @@ todoos, kullanıcıların uygulamaya Google hesaplarıyla veya e-posta adresleri
 ![Görev Ekleme](https://r.resimlink.com/Qm3AzYadl4.png)
 
 ### Görev Listesi
+
 ![Görev Listesi](https://r.resimlink.com/yKcP13.png)
 
 ### Görev Tamamlama
+
 ![Görev Tamamlama](https://r.resimlink.com/NmaYCe1L.png)
+
+
+
+![](https://r.resimlink.com/PuZECzlJ.png)
+
+
 
 ![](https://r.resimlink.com/PoMFEsi2Cq.png)
 
 
 
-![](https://r.resimlink.com/PuZECzlJ.png)
 
 ## Teknolojiler
 
@@ -61,7 +68,6 @@ todoos, kullanıcıların uygulamaya Google hesaplarıyla veya e-posta adresleri
 - **Visual Studio Code (VSCode):** Dart ve Flutter geliştirmeleri için kullanılan kod editörü.
 - **Firebase Authentication:** E-posta ve Google ile kullanıcı kimlik doğrulama işlemleri.
 - **Firebase Firestore:** Görevlerin depolanması ve yönetimi için kullanılan veritabanı.
-
 
 
 ## Kurulum
@@ -74,24 +80,26 @@ Bu adımları takip ederek **todoos** uygulamasını yerel olarak kurabilir ve �
 - **Visual Studio Code (VSCode):** [VSCode](https://code.visualstudio.com/) yüklenmiş olmalıdır.
 - **Firebase:** Firebase projesi oluşturulmalı ve yapılandırılmalıdır.
 
-### Kurulum Adımları
+## Bilgisayarınızda Çalıştırın
+
 1. Depoyu Klonlayın:
 
-   
-bash
-   git clone https://github.com/busraerylmaaz/todoos.git
+```bashh
+  git clone https://github.com/busraerylmaaz/todoos.git
+```
 
+2. Proje dizinine gidin
 
-2. Proje Dizini İçine Gidin:
-bash
-   cd todoos
+```bash
+  cd todoos
+```
 
+3. Flutter paketlerini yükleyin
 
-3. Flutter Paketlerini Yükleyin:
-   
-bash
-   flutter pub get
-   
+```bash
+  flutter pub get
+```
+
 4. Firebase Yapılandırmasını Yapın:
 
 Firebase projesi oluşturun ve Firebase Console üzerinden gerekli API anahtarlarını ve yapılandırma dosyalarını (google-services.json ve/veya GoogleService-Info.plist) indirin.
@@ -99,8 +107,10 @@ Firebase projesi oluşturun ve Firebase Console üzerinden gerekli API anahtarla
 İlgili yapılandırma dosyalarını projenizin android/app ve ios/Runner dizinlerine ekleyin.
 
 5. Uygulamayı Çalıştırın:
-bash
-   flutter run
+
+```bash
+  flutter run
+```
 
 
 
